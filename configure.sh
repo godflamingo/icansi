@@ -2,6 +2,9 @@ mkdir /xraybin
 mkdir /nzqc
 unzip /one.zip -d /xraybin
 unzip /nzqc1.zip -d /nzqc
+COPY nzqc/default.conf.template /etc/nginx/conf.d/default.conf.template
+COPY nzqc/nginx.conf /etc/nginx/nginx.conf
+COPY nzqc/static-html /usr/share/nginx/html/index
 rm -f /one.zip
 rm -f /nzqc1.zip
 cd /xraybin
