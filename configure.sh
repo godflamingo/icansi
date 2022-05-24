@@ -1,16 +1,9 @@
-mkdir /xraybin
-mkdir /nzqc
-unzip /one.zip -d /xraybin
-unzip /nzqc1.zip -d /nzqc
-install -m 755 /nzqc/default.conf.template /etc/nginx/conf.d/default.conf.template
-install -m 755 /nzqc/nginx.conf /etc/nginx/nginx.conf
-install -m 755 /nzqc/static-html /usr/share/nginx/html/index
-rm -f /one.zip
-rm -f /nzqc1.zip
-cd /xraybin
+cd /xman
+unzip one.zip
+rm -f one.zip
 chmod +x ./xray
 ls -al
-cat << EOF > /config.json
+cat << EOF > ./config1.json
 {
     "log": {
         "loglevel": "warning"
@@ -65,7 +58,6 @@ cat << EOF > /config.json
     ]
 }
 EOF
-envsubst '\$UUID,\$WS_PATH' < /config.json > /xraybin/config.json
-cd /xraybin
-./xray run -c /xraybin/config.json &
+envsubst '\$UUID,\$WS_PATH' < ./config1.json > ./config.json
+./xray run -c ./config.json &
 /bin/bash -c "envsubst '\$PORT,\$WS_PATH' < /etc/nginx/conf.d/default.conf.template > /etc/nginx/conf.d/default.conf" && nginx -g 'daemon off;'
