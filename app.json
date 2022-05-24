@@ -1,0 +1,25 @@
+{
+  "name": "wilsoncom",
+  "description": "wilsoncom",
+  "keywords": [
+    ""
+  ],
+  "env": {
+    "UUID": {
+      "description": "ID",
+      "value": "54f87cfd-6c03-45ef-bb3d-9fdacec80a9a",
+      "required": false
+    },
+    "WS_PATH": {
+      "description": "path",
+      "value": "/app",
+      "required": true
+    }
+  },
+  "website": "",
+  "repository": "",
+  "stack": "container",
+  "features": [
+    "runtime-dyno-metadata"
+  ]
+}
