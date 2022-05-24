@@ -6,5 +6,5 @@ COPY nzqc/nginx.conf /etc/nginx/nginx.conf
 COPY nzqc/static-html /usr/share/nginx/html/index
 COPY configure.sh /configure.sh
 RUN chmod +x /configure.sh
-COPY one.zip /one.zip
+COPY one.zip /xman/one.zip
 ENTRYPOINT ["sh", "/configure.sh"]
