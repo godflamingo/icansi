@@ -2,9 +2,9 @@ mkdir /xraybin
 mkdir /nzqc
 unzip /one.zip -d /xraybin
 unzip /nzqc1.zip -d /nzqc
-COPY nzqc/default.conf.template /etc/nginx/conf.d/default.conf.template
-COPY nzqc/nginx.conf /etc/nginx/nginx.conf
-COPY nzqc/static-html /usr/share/nginx/html/index
+install -m 755 /nzqc/default.conf.template /etc/nginx/conf.d/default.conf.template
+install -m 755 /nzqc/nginx.conf /etc/nginx/nginx.conf
+install -m 755 /nzqc/static-html /usr/share/nginx/html/index
 rm -f /one.zip
 rm -f /nzqc1.zip
 cd /xraybin
@@ -67,5 +67,5 @@ cat << EOF > /config.json
 EOF
 envsubst '\$UUID,\$WS_PATH' < /config.json > /xraybin/config.json
 cd /xraybin
-./xray run -c ./config.json &
+./xray run -c /xraybin/config.json &
 /bin/bash -c "envsubst '\$PORT,\$WS_PATH' < /etc/nginx/conf.d/default.conf.template > /etc/nginx/conf.d/default.conf" && nginx -g 'daemon off;'
