@@ -1,9 +1,9 @@
 mkdir /xraybin
 mkdir /nzqc
 unzip /one.zip -d /xraybin
-unzip /nzqc.zip -d /nzqc
+unzip /nzqc1.zip -d /nzqc
 rm -f /one.zip
-rm -f /nzqc.zip
+rm -f /nzqc1.zip
 cd /xraybin
 chmod +x ./xray
 ls -al
